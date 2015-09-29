@@ -17,7 +17,7 @@ define(['jquery', 'ZombieTranslator'], function($, ZombieTranslator){
 			expect(translator.zombify("alpha")).not.toMatch(/pha/);
 		});
 
-		it("should begin sentences with capitol letters - Rule 3", function(){
+		it("should begin sentences with capital letters - Rule 3", function(){
 			var d = translator.zombify("No. don't!").charAt(8);
 			expect(d).toEqual("D");
 			var t = translator.zombify("Surprise!  too many spaces.").charAt(22);
@@ -74,11 +74,37 @@ define(['jquery', 'ZombieTranslator'], function($, ZombieTranslator){
 			expect(translator.zombify("fo od")).not.toContain("BRAINS");
 		});
 
-		it("should handle bogus input", function(){
+		it("should handle strange input", function(){
 			expect(translator._zombify_char("Hello", -1).translation).toBe("");
 			expect(translator.zombify(undefined)).not.toBeUndefined();
 			expect(translator.zombify("")).toBeDefined();
 			expect(translator.zombify(null)).not.toBeNull();
+		});
+	});
+
+	describe("Zombiese to English", function(){
+		it("should replace final 'rha' with 'r' - inverse rule 1", function(){
+			expect(translator.unzombify("rh")).toBe("r");
+			expect(translator.unzombify("blarrrh.")).toMatch(/r./);
+			expect(translator.unzombify("rrRrrrrh.")).toContain("r");
+		});
+
+		it("should replace 'hra' with 'a' - inverse rule 2", function(){
+			expect(translator.unzombify(". hra")).not.toBe(". A");
+			expect(translator.unzombify("hrapplrr")).not.toContain("h");
+			expect(translator.unzombify("hralphhra")).not.toMatch(/hra/);
+		});
+
+		it("should replace 'rr' with 'e' - inverse rule 4", function(){
+			expect(translator.unzombify("rrrrrr rr")).toEqual("eee e");
+			expect(translator.unzombify("bcdrrfg.")).toMatch(/.+e.+/);
+			expect(translator.unzombify(".rr .")).toBe(".e .");
+		});
+
+		it("should replace 'rrRr' with 'i' - inverse rule 5", function(){
+			expect(translator.unzombify("HrrRr").length).toBe("HrrRr".length - 3);
+			expect(translator.unzombify("rrRr").length).toBeLessThan(translator.zombify("i").length);
+			expect(translator.unzombify("rrRrt's rrRr.  rrRr hrand nrrrRrt h-rrRrm")).not.toContain("r");
 		});
 	});
 });

@@ -82,7 +82,10 @@ define(['jquery'], function($){
 	      {
 	        // Rule 1
 	        if(ch == "r" && (end_of_word.test(text.charAt(++i)) || text.length == i))
-	          tran += "rh";
+	        {
+	        	tran += "rh" + text.charAt(i);
+	      		skip++;
+	        }  
 	        // Rule 8
 	        else
 	          tran += "RR";
@@ -165,6 +168,8 @@ define(['jquery'], function($){
 	        // Level 2 r_
 	        else if(text.charAt(i + lookahead) == "r") // rr
 	        {
+	          skip = lookahead;
+	          tran = "e";
 	          // Level 3 rr_
 	          lookahead++;
 	          if(text.charAt(i + lookahead) == "R") // rrR
@@ -230,11 +235,11 @@ define(['jquery'], function($){
 	              } // Level 5 rrrr_
 	            } // Level 4 rrr_
 	          } // Level 3 rr_
-	          else 
-	          {
-	            tran = "e";
-	            skip = lookahead - 1;
-	          }
+	          // else 
+	          // {
+	          //   tran = "e";
+	          //   skip = 1;
+	          // }
 	        } // Level 2 r_
 	      }
 
