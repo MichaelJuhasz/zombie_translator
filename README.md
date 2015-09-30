@@ -18,6 +18,6 @@ zombies can't count; any digit or digits are replaced by "?"<br/>
 
 ## How to use
 
-In the application itself, typing something in the English text box will result in an automatic translation into Zombiese.  To translate back to Englih, just click on the Zombiese text box.
+In the application itself, typing something in the English text box will result in an automatic translation into Zombiese.  To translate back to English, just click on the Zombiese text box.
 
 Karma should be run from the "js" directory ("zombie_translator/js/").
