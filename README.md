@@ -5,15 +5,15 @@ But we have prepared. With this application we can translate from English to Zom
 
 The rules are as follows:
 
-lower-case "r" at the end of words replaced with "rh".
-an "a" or "A" by itself will be replaced with "hra".
-the starts of sentences are capitalized (the "start of a sentence" is any occurrence of ".!?", followed by a space, followed by a letter.)
-"e" or "E" is replaced by "rr"
-"i" or "I" is replaced by "rrRr"
-"o" or "O" is replaced by "rrrRr"
-"u" or "U" is replaced by "rrrrRr"
-"r" or "R" is replaced by "RR"
-zombies can't count; any digit or digits are replaced by "?"
+lower-case "r" at the end of words replaced with "rh".<br/>
+an "a" or "A" by itself will be replaced with "hra".<br/>
+the starts of sentences are capitalized (the "start of a sentence" is any occurrence of ".!?", followed by a space, followed by a letter.)<br/>
+"e" or "E" is replaced by "rr"<br/>
+"i" or "I" is replaced by "rrRr"<br/>
+"o" or "O" is replaced by "rrrRr"<br/>
+"u" or "U" is replaced by "rrrrRr"<br/>
+"r" or "R" is replaced by "RR"<br/>
+zombies can't count; any digit or digits are replaced by "?"<br/>
 "food," regardless of case, is replaced by "BRAINS"
 
 ## How to use
