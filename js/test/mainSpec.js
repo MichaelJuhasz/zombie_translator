@@ -106,5 +106,34 @@ define(['jquery', 'ZombieTranslator'], function($, ZombieTranslator){
 			expect(translator.unzombify("rrRr").length).toBeLessThan(translator.zombify("i").length);
 			expect(translator.unzombify("rrRrt's rrRr.  rrRr hrand nrrrRrt h-rrRrm")).not.toContain("r");
 		});
+
+		it("should replace 'rrrRr' with 'o' - inverse rule 6", function(){
+			expect(translator.unzombify("rrrRrh-hrrrRr").length).not.toBeLessThan(translator.unzombify("nrrrRr mrrrRr"));
+			var s = "";
+			for(var i = 0; Math.floor(Math.random()*1000); i++)
+			{
+				s += "rrrRr";
+			}
+			expect(translator.unzombify(s).length).toBe(s.length / 5);
+			expect(translator.unzombify(".rrrRr'rrrRr rrrRr]rrrRr[rrrRr;rrrRr:rrrRr/rrrRr\\rrrRr\"rrrRr?rrrRr~rrrRr!rrrRr")).not.toContain("r");
+		});
+
+		it("should replace 'rrrrRr' with 'u' - inverse rule 7", function(){
+			expect(translator.unzombify(". rrrrRr")).not.toBe("U");
+			expect(translator.unzombify("vhracrrrrRrrrrrRrm")).toMatch(/uu/i);
+			expect(translator.unzombify("rrrrRr")).toEqual(translator.unzombify(translator.zombify("ei")));
+		});
+
+		it("should repalce a 'RR' with 'r' - inverse rule 8", function(){
+			expect(translator.unzombify('RRf')).not.toMatch(/rr/i);
+			expect(translator.unzombify("R RjR~R:R;R)R(R<R>R*R&R^R%R$R#R@R-R_R+R=")).not.toContain("h");
+			expect(translator.unzombify("RRh")).toContain("h");
+		});
+
+		it("should replace 'BRAINS' with food - inverse rule 10", function(){
+			expect(translator.unzombify("bRaInS")).not.toBe("food");
+			expect(translator.unzombify("wrrlrrRrkrrBRAINStrrrRrrrhrat")).toMatch(/.*food.*/);
+			expect(translator.unzombify("BR AINS")).not.toContain("food");
+		});
 	});
 });

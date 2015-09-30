@@ -1,11 +1,9 @@
 *The end is nigh!*
-But we can prepare. In this assignment we will begin preparing for the end by creating a simple zombie translator. This can be used by the living for either concealment or bartering and the living impaired will have an easier time asking for brains. 
-
-The translator can be done as a series of regular expressions (Links to an external site.) or you can step through it character by character. You get a string and you transform that string. 
+But we have prepared. With this application we can translate from English to Zombiese and from Zombiese to English.  Zombies, being of rotten and rotted minds, cannot distinguish between "ei" and "u."  As such, "weird" translated into Zombiese and then back into English will appear as "wurd."  Such is un-life.
 
 ## The Rules
 
-There are some sample rules contained in the skeleton source code and are as follows:
+The rules are as follows:
 
 lower-case "r" at the end of words replaced with "rh".
 an "a" or "A" by itself will be replaced with "hra".
@@ -15,38 +13,11 @@ the starts of sentences are capitalized (the "start of a sentence" is any occurr
 "o" or "O" is replaced by "rrrRr"
 "u" or "U" is replaced by "rrrrRr"
 "r" or "R" is replaced by "RR"
- 
-*There should be 10 rules total. So make 2 rules up. Each rule should be a separate function. Edited out. Unnecessary*
+zombies can't count; any digit or digits are replaced by "?"
+"food," regardless of case, is replaced by "BRAINS"
 
-Make use of 3 different jasmine "expect" methods per rule. http://jasmine.github.io/2.3/introduction.html (Links to an external site.) Zombies are known to be able to repeat the same statements over and over. We want to make sure the rules are not written by the undead and aren't just a list of expect(myFunc('i')).toBe('rrRr');
+## How to use
 
-For example:
-```
-expect(30).toBe(30);
-expect(undefinedVariable).toBeUndefined();
-expect('30').toContain('0');
-expect(callback).not.toHaveBeenCalledWith(jasmine.stringMatching(/^bar$/));
-```
- 
-What really matters is the structure. The last thing the resistance needs is for zombies to write false translators to trick us. We need to make sure a human, professional developer created the zombie translator. We all know zombies don't know how to write modular code, and they never test. 
+In the application itself, typing something in the English text box will result in an automatic translation into Zombiese.  To translate back to Englih, just click on the Zombiese text box.
 
-Each of the rules needs to be modular enough to test separately. There should also be a test for the entire function. 
-
-## Starting point
-
-You can use this repository for a starting point. 
-
-## Submission
-
-Zip up the project when you're done and submit the zip file. 
-
-## Have to use
-
-You have to use RequireJS and Jasmine and Karma. 
-
-Tests need to be run with Karma. Jasmine Tests. On RequireJS modules.
-
-## Extra credit
-*20pts*
-
-If you correctly "unzombify" (with tests).
+Karma should be run from the "js" directory ("zombie_translator/js/").

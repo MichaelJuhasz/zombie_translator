@@ -27,6 +27,10 @@ define(['jquery'], function($){
 
 	    ZombieTranslator.prototype.unzombify = function(text){
 	      var translation = "";
+	      if(text === null || typeof text === "undefined")
+	      {
+	      	return "undefined";
+	      }
 	      for(var i = 0; i < text.length; i++)
 	      {
 	        var result = this._unzombify_char(text, i);
@@ -146,18 +150,56 @@ define(['jquery'], function($){
 	      var tran = "";
 	      var lookahead = 0;
 
-	      if(ch == "R")
+	      if(i < 0 || text === null || typeof text === undefined)
+	      {
+	      	return{
+	      		skip: text.length,
+	      		translation: ""
+	      	};
+	      }
+
+	      if(ch == "B")
+	      {
+	      	tran = "B";
+	      	lookahead++;
+	      	if(text.charAt(i + lookahead) == "R")
+	      	{
+	      		lookahead++;
+	      		if(text.charAt(i + lookahead) == "A")
+	      		{
+	      			lookahead++;
+	      			if(text.charAt(i + lookahead) == "I")
+	      			{
+	      				lookahead++;
+	      				if(text.charAt(i + lookahead) == "N")
+	      				{
+	      					lookahead++;
+	      					if(text.charAt(i + lookahead) == "S")
+	      					{
+	      						tran = "food";
+	      						skip = lookahead;
+	      					}
+	      				}
+	      			}
+	      		}
+	      	}
+	      }
+
+	      else if(ch == "R")
 	      {
 	        if(text.charAt(++i) == "R")
 	        {
 	          tran = "r";
 	          skip++;
 	        }
+	        else 
+	        	tran = "R";
 	      }
 
 	      else if(ch == "r")
 	      {
-	        // Level 2 
+	      	tran = ch;
+	        // Level 2 r_
 	        lookahead++;
 	        if(text.charAt(i + lookahead) == "h") // rh
 	        {
